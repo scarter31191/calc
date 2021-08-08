@@ -33,6 +33,14 @@ class App extends Component {
     }
   }
 
+  calculate = (symbol) => {
+    let {current, previous, nextIsReset} = this.state;
+    if(previous.length > 0){
+      current = eval(String(previous[previous.length - 1] + current));
+      this.setState({current, previous: [], nextIsReset: true});
+    }
+  }
+
   render() {
     const buttons = [
       {symbol: 'C', cols: 3, action: this.reset},
@@ -51,7 +59,7 @@ class App extends Component {
       {symbol: '+', cols: 1, action: this.addToCurrent},
       {symbol: '0', cols: 2, action: this.addToCurrent},
       {symbol: '.', cols: 1, action: this.addToCurrent},
-      {symbol: '=', cols: 1, action: this.addToCurrent}
+      {symbol: '=', cols: 1, action: this.calculate}
     ]
     return (
       <div className="App">
