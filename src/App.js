@@ -2,6 +2,7 @@
 // import './App.css';
 import React, {Component} from "react";
 import Button from "./components/Button"
+import "./css/style.css";
 
 class App extends Component {
   constructor(props){
@@ -43,10 +44,15 @@ class App extends Component {
     ]
     return (
       <div className="App">
-        <input className="result" type="text" value={this.state.current} />
-        {buttons.map((btn, i) => {
-          return <Button key={i} symbol={btn.symbol} cols={btn.cols} action={(symbol) => btn.action(symbol)} />
-        })}
+        <div>
+          <input className="result" type="text" value={this.state.current} />
+        </div>
+
+        <div>
+          {buttons.map((btn, i) => {
+            return <Button key={i} symbol={btn.symbol} cols={btn.cols} action={(symbol) => btn.action(symbol)} />
+          })}
+        </div>
       </div>
     );
   }
